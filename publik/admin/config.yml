@@ -1,0 +1,11 @@
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nama Produk", name: "title", widget: "string" }
+      - { label: "Deskripsi", name: "description", widget: "text" }
+      - { label: "Harga", name: "price", widget: "number" }
+      - { label: "Gambar Produk", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" }, min: 3, max: 3 }
