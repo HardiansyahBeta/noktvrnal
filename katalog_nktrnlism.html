@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NKTRNLISM - NOKTVRNAL</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    .product-card {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      width: 300px;
+      position: relative;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .carousel-img {
+      display: none;
+      width: 100%;
+      border-radius: 10px;
+    }
+    .carousel-img.active {
+      display: block;
+    }
+    .prev-btn, .next-btn {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 5px 10px;
+      z-index: 10;
+    }
+    .prev-btn { left: 5px; }
+    .next-btn { right: 5px; }
+    .desc {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="product-card">
+  <div class="carousel">
+    <img src="images/nktrnlism/depan.png" class="carousel-img active">
+    <img src="images/nktrnlism/belakang.png" class="carousel-img">
+    <img src="images/nktrnlism/detail.png" class="carousel-img">
+    <button class="prev-btn">&#10094;</button>
+    <button class="next-btn">&#10095;</button>
+  </div>
+  <h3>NKTRNLISM</h3>
+  <p><span style="color: gold;">Rp90.000</span></p>
+  <p class="desc">
+    NKTRNLISM adalah tentang prinsip.<br>
+    Saat dunia tidur, kita berpikir. Saat semua ikut arus, kita cari arah sendiri.
+  </p>
+</div>
+
+<script>
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    let images = carousel.querySelectorAll('.carousel-img');
+    let index = 0;
+
+    const showImage = (i) => {
+      images.forEach((img, idx) => {
+        img.classList.toggle('active', idx === i);
+      });
+    };
+
+    carousel.querySelector('.prev-btn').onclick = () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    };
+
+    carousel.querySelector('.next-btn').onclick = () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    };
+
+    showImage(index);
+  });
+</script>
+
+</body>
+</html>
